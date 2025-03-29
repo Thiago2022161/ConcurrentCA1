@@ -18,6 +18,7 @@ public class MatrixCalculation {
         double[][] result = new double[size][size];
 
         Thread[] threads = new Thread[size];
+
         for (int i = 0; i < size; i++) {
             final int row = i;
             threads[i] = new Thread(() -> {

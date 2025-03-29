@@ -7,6 +7,7 @@ package concurrentca1;
 import csv.DataReader;
 import stddev.StandardDeviation;
 import matrix.MatrixCalculation;
+import matrix.MatrixCalcExecutor;
 import sort.DataSorter;
 
 import java.io.IOException;
@@ -38,15 +39,22 @@ public class ConcurrentRunner {
             System.arraycopy(data, (i + size) * size, matrixB[i], 0, size);
         }
 
-        double[][] resultMatrix = MatrixCalculation.multiply(matrixA, matrixB);
-        System.out.println("Matrix (10x10) Multiplication Result:\n");
-        for (double[] row : resultMatrix) {
+        double[][] resultThread = MatrixCalculation.multiply(matrixA, matrixB);
+        System.out.println("Matrix Multiplication (Using Threads):\n");
+        for (double[] row : resultThread) {
+            System.out.println(Arrays.toString(row));
+        }
+
+        double[][] resultExecutor = MatrixCalcExecutor.multiply(matrixA, matrixB);
+        System.out.println("\nMatrix Multiplication (Using ExecutorService):\n");
+        for (double[] row : resultExecutor) {
             System.out.println(Arrays.toString(row));
         }
 
         double[] dataCopy = Arrays.copyOf(data, data.length);
         pool.invoke(new DataSorter(dataCopy, 0, dataCopy.length - 1));
         System.out.println("\nAll 200 Numbers Sorted (Descending):\n");
+
         for (int i = 0; i < dataCopy.length; i++) {
             System.out.print(dataCopy[i] + "\t");
             if ((i + 1) % 10 == 0) {
