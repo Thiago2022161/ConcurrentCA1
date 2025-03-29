@@ -10,7 +10,6 @@ import java.util.concurrent.RecursiveAction;
  *
  * @author thiagogoncos
  */
-
 public class DataSorter extends RecursiveAction {
 
     private final double[] array;
@@ -47,8 +46,12 @@ public class DataSorter extends RecursiveAction {
             }
         }
 
-        while (i <= mid) temp[k++] = array[i++];
-        while (j <= right) temp[k++] = array[j++];
+        while (i <= mid) {
+            temp[k++] = array[i++];
+        }
+        while (j <= right) {
+            temp[k++] = array[j++];
+        }
 
         System.arraycopy(temp, 0, array, left, temp.length);
     }

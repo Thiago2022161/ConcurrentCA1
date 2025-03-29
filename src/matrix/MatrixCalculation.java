@@ -8,14 +8,16 @@ package matrix;
  *
  * @author thiagogoncos
  */
-
 public class MatrixCalculation {
+
+    private MatrixCalculation() {
+    }
 
     public static double[][] multiply(double[][] a, double[][] b) {
         int size = a.length;
         double[][] result = new double[size][size];
-        Thread[] threads = new Thread[size];
 
+        Thread[] threads = new Thread[size];
         for (int i = 0; i < size; i++) {
             final int row = i;
             threads[i] = new Thread(() -> {
@@ -32,7 +34,8 @@ public class MatrixCalculation {
             try {
                 t.join();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
+                System.err.println("Thread interrupted during matrix calculation: " + e.getMessage());
             }
         }
 

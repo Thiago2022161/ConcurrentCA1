@@ -17,8 +17,8 @@ import java.util.concurrent.ForkJoinPool;
  *
  * @author thiagogoncos
  */
-
 public class ConcurrentRunner {
+
     public static void main(String[] args) throws IOException {
 
         double[] data = DataReader.readCSV("data.csv");
@@ -48,10 +48,10 @@ public class ConcurrentRunner {
         pool.invoke(new DataSorter(dataCopy, 0, dataCopy.length - 1));
         System.out.println("\nAll 200 Numbers Sorted (Descending):\n");
         for (int i = 0; i < dataCopy.length; i++) {
-    System.out.print(dataCopy[i] + "\t");
-    if ((i + 1) % 10 == 0) {
-        System.out.println(); 
-    }
-}
+            System.out.print(dataCopy[i] + "\t");
+            if ((i + 1) % 10 == 0) {
+                System.out.println();
+            }
+        }
     }
 }

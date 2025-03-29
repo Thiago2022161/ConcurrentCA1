@@ -10,7 +10,6 @@ import java.util.concurrent.RecursiveTask;
  *
  * @author thiagogoncos
  */
-
 public class StandardDeviation extends RecursiveTask<Double> {
 
     private final double[] data;
@@ -38,9 +37,9 @@ public class StandardDeviation extends RecursiveTask<Double> {
             StandardDeviation leftTask = new StandardDeviation(data, start, mid, mean);
             StandardDeviation rightTask = new StandardDeviation(data, mid, end, mean);
 
-            leftTask.fork(); 
-            double rightResult = rightTask.compute(); 
-            double leftResult = leftTask.join(); 
+            leftTask.fork();
+            double rightResult = rightTask.compute();
+            double leftResult = leftTask.join();
 
             return leftResult + rightResult;
         }
