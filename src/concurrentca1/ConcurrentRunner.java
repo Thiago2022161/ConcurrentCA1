@@ -26,6 +26,17 @@ public class ConcurrentRunner {
 
     public static void main(String[] args) throws IOException {
 
+        //Just an output introduction 
+        System.out.println("==================================================");
+        System.out.println("This program performs 3 tasks using concurrency:");
+        System.out.println("1. Calculates the standard deviation of 200 numbers from a CSV file.");
+        System.out.println("2. Multiplies two 10x10 matrices using two different concurrency methods:");
+        System.out.println("   - Using manual Threads");
+        System.out.println("   - Using ExecutorService");
+        System.out.println("3. Sorts all 200 numbers in descending order using merge sort with Fork/Join.");
+        System.out.println("Below you can see the results of each task:");
+        System.out.println("==================================================\n");
+
         // Step 1: Read all numbers from the CSV file into an array
         double[] data = DataReader.readCSV("data.csv");
 
